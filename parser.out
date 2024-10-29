@@ -1,0 +1,736 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMA
+    NUMBER
+    STRING_LITERAL
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> program statement
+Rule 3     statement -> function_declaration
+Rule 4     statement -> function_definition
+Rule 5     statement -> datatype_declaration
+Rule 6     statement -> array_declaration
+Rule 7     statement -> selection_statement
+Rule 8     statement -> loop_construct
+Rule 9     statement -> class_definition
+Rule 10    statement -> object_creation
+Rule 11    function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON
+Rule 12    function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE
+Rule 13    datatype_declaration -> INT IDENTIFIER SEMICOLON
+Rule 14    datatype_declaration -> FLOAT IDENTIFIER SEMICOLON
+Rule 15    datatype_declaration -> STRING IDENTIFIER SEMICOLON
+Rule 16    array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON
+Rule 17    selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+Rule 18    loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+Rule 19    class_definition -> CLASS IDENTIFIER LBRACE RBRACE
+Rule 20    object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+Rule 21    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ARRAY                : 16
+CLASS                : 19
+COMMA                : 
+EQUAL                : 16 20
+FLOAT                : 14
+FUNCTION             : 11 12
+IDENTIFIER           : 11 12 13 14 15 16 17 18 19 20 20 20
+IF                   : 17
+INT                  : 13
+LBRACE               : 12 16 17 18 19
+LPAREN               : 11 12 17 18 20
+NEW                  : 20
+NUMBER               : 
+RBRACE               : 12 16 17 18 19
+RPAREN               : 11 12 17 18 20
+SEMICOLON            : 11 13 14 15 16 20
+STRING               : 15
+STRING_LITERAL       : 
+WHILE                : 18
+error                : 
+
+Nonterminals, with rules where they appear
+
+array_declaration    : 6
+class_definition     : 9
+datatype_declaration : 5
+empty                : 
+function_declaration : 3
+function_definition  : 4
+loop_construct       : 8
+object_creation      : 10
+program              : 2 0
+selection_statement  : 7
+statement            : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . function_declaration
+    (4) statement -> . function_definition
+    (5) statement -> . datatype_declaration
+    (6) statement -> . array_declaration
+    (7) statement -> . selection_statement
+    (8) statement -> . loop_construct
+    (9) statement -> . class_definition
+    (10) statement -> . object_creation
+    (11) function_declaration -> . FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON
+    (12) function_definition -> . FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE
+    (13) datatype_declaration -> . INT IDENTIFIER SEMICOLON
+    (14) datatype_declaration -> . FLOAT IDENTIFIER SEMICOLON
+    (15) datatype_declaration -> . STRING IDENTIFIER SEMICOLON
+    (16) array_declaration -> . ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON
+    (17) selection_statement -> . IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+    (18) loop_construct -> . WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+    (19) class_definition -> . CLASS IDENTIFIER LBRACE RBRACE
+    (20) object_creation -> . IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    FUNCTION        shift and go to state 11
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    STRING          shift and go to state 15
+    ARRAY           shift and go to state 16
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    CLASS           shift and go to state 19
+    IDENTIFIER      shift and go to state 12
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    function_declaration           shift and go to state 3
+    function_definition            shift and go to state 4
+    datatype_declaration           shift and go to state 5
+    array_declaration              shift and go to state 6
+    selection_statement            shift and go to state 7
+    loop_construct                 shift and go to state 8
+    class_definition               shift and go to state 9
+    object_creation                shift and go to state 10
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . statement
+    (3) statement -> . function_declaration
+    (4) statement -> . function_definition
+    (5) statement -> . datatype_declaration
+    (6) statement -> . array_declaration
+    (7) statement -> . selection_statement
+    (8) statement -> . loop_construct
+    (9) statement -> . class_definition
+    (10) statement -> . object_creation
+    (11) function_declaration -> . FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON
+    (12) function_definition -> . FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE
+    (13) datatype_declaration -> . INT IDENTIFIER SEMICOLON
+    (14) datatype_declaration -> . FLOAT IDENTIFIER SEMICOLON
+    (15) datatype_declaration -> . STRING IDENTIFIER SEMICOLON
+    (16) array_declaration -> . ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON
+    (17) selection_statement -> . IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+    (18) loop_construct -> . WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+    (19) class_definition -> . CLASS IDENTIFIER LBRACE RBRACE
+    (20) object_creation -> . IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    FUNCTION        shift and go to state 11
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    STRING          shift and go to state 15
+    ARRAY           shift and go to state 16
+    IF              shift and go to state 17
+    WHILE           shift and go to state 18
+    CLASS           shift and go to state 19
+    IDENTIFIER      shift and go to state 12
+
+    statement                      shift and go to state 20
+    function_declaration           shift and go to state 3
+    function_definition            shift and go to state 4
+    datatype_declaration           shift and go to state 5
+    array_declaration              shift and go to state 6
+    selection_statement            shift and go to state 7
+    loop_construct                 shift and go to state 8
+    class_definition               shift and go to state 9
+    object_creation                shift and go to state 10
+
+state 2
+
+    (1) program -> statement .
+
+    FUNCTION        reduce using rule 1 (program -> statement .)
+    INT             reduce using rule 1 (program -> statement .)
+    FLOAT           reduce using rule 1 (program -> statement .)
+    STRING          reduce using rule 1 (program -> statement .)
+    ARRAY           reduce using rule 1 (program -> statement .)
+    IF              reduce using rule 1 (program -> statement .)
+    WHILE           reduce using rule 1 (program -> statement .)
+    CLASS           reduce using rule 1 (program -> statement .)
+    IDENTIFIER      reduce using rule 1 (program -> statement .)
+    $end            reduce using rule 1 (program -> statement .)
+
+
+state 3
+
+    (3) statement -> function_declaration .
+
+    FUNCTION        reduce using rule 3 (statement -> function_declaration .)
+    INT             reduce using rule 3 (statement -> function_declaration .)
+    FLOAT           reduce using rule 3 (statement -> function_declaration .)
+    STRING          reduce using rule 3 (statement -> function_declaration .)
+    ARRAY           reduce using rule 3 (statement -> function_declaration .)
+    IF              reduce using rule 3 (statement -> function_declaration .)
+    WHILE           reduce using rule 3 (statement -> function_declaration .)
+    CLASS           reduce using rule 3 (statement -> function_declaration .)
+    IDENTIFIER      reduce using rule 3 (statement -> function_declaration .)
+    $end            reduce using rule 3 (statement -> function_declaration .)
+
+
+state 4
+
+    (4) statement -> function_definition .
+
+    FUNCTION        reduce using rule 4 (statement -> function_definition .)
+    INT             reduce using rule 4 (statement -> function_definition .)
+    FLOAT           reduce using rule 4 (statement -> function_definition .)
+    STRING          reduce using rule 4 (statement -> function_definition .)
+    ARRAY           reduce using rule 4 (statement -> function_definition .)
+    IF              reduce using rule 4 (statement -> function_definition .)
+    WHILE           reduce using rule 4 (statement -> function_definition .)
+    CLASS           reduce using rule 4 (statement -> function_definition .)
+    IDENTIFIER      reduce using rule 4 (statement -> function_definition .)
+    $end            reduce using rule 4 (statement -> function_definition .)
+
+
+state 5
+
+    (5) statement -> datatype_declaration .
+
+    FUNCTION        reduce using rule 5 (statement -> datatype_declaration .)
+    INT             reduce using rule 5 (statement -> datatype_declaration .)
+    FLOAT           reduce using rule 5 (statement -> datatype_declaration .)
+    STRING          reduce using rule 5 (statement -> datatype_declaration .)
+    ARRAY           reduce using rule 5 (statement -> datatype_declaration .)
+    IF              reduce using rule 5 (statement -> datatype_declaration .)
+    WHILE           reduce using rule 5 (statement -> datatype_declaration .)
+    CLASS           reduce using rule 5 (statement -> datatype_declaration .)
+    IDENTIFIER      reduce using rule 5 (statement -> datatype_declaration .)
+    $end            reduce using rule 5 (statement -> datatype_declaration .)
+
+
+state 6
+
+    (6) statement -> array_declaration .
+
+    FUNCTION        reduce using rule 6 (statement -> array_declaration .)
+    INT             reduce using rule 6 (statement -> array_declaration .)
+    FLOAT           reduce using rule 6 (statement -> array_declaration .)
+    STRING          reduce using rule 6 (statement -> array_declaration .)
+    ARRAY           reduce using rule 6 (statement -> array_declaration .)
+    IF              reduce using rule 6 (statement -> array_declaration .)
+    WHILE           reduce using rule 6 (statement -> array_declaration .)
+    CLASS           reduce using rule 6 (statement -> array_declaration .)
+    IDENTIFIER      reduce using rule 6 (statement -> array_declaration .)
+    $end            reduce using rule 6 (statement -> array_declaration .)
+
+
+state 7
+
+    (7) statement -> selection_statement .
+
+    FUNCTION        reduce using rule 7 (statement -> selection_statement .)
+    INT             reduce using rule 7 (statement -> selection_statement .)
+    FLOAT           reduce using rule 7 (statement -> selection_statement .)
+    STRING          reduce using rule 7 (statement -> selection_statement .)
+    ARRAY           reduce using rule 7 (statement -> selection_statement .)
+    IF              reduce using rule 7 (statement -> selection_statement .)
+    WHILE           reduce using rule 7 (statement -> selection_statement .)
+    CLASS           reduce using rule 7 (statement -> selection_statement .)
+    IDENTIFIER      reduce using rule 7 (statement -> selection_statement .)
+    $end            reduce using rule 7 (statement -> selection_statement .)
+
+
+state 8
+
+    (8) statement -> loop_construct .
+
+    FUNCTION        reduce using rule 8 (statement -> loop_construct .)
+    INT             reduce using rule 8 (statement -> loop_construct .)
+    FLOAT           reduce using rule 8 (statement -> loop_construct .)
+    STRING          reduce using rule 8 (statement -> loop_construct .)
+    ARRAY           reduce using rule 8 (statement -> loop_construct .)
+    IF              reduce using rule 8 (statement -> loop_construct .)
+    WHILE           reduce using rule 8 (statement -> loop_construct .)
+    CLASS           reduce using rule 8 (statement -> loop_construct .)
+    IDENTIFIER      reduce using rule 8 (statement -> loop_construct .)
+    $end            reduce using rule 8 (statement -> loop_construct .)
+
+
+state 9
+
+    (9) statement -> class_definition .
+
+    FUNCTION        reduce using rule 9 (statement -> class_definition .)
+    INT             reduce using rule 9 (statement -> class_definition .)
+    FLOAT           reduce using rule 9 (statement -> class_definition .)
+    STRING          reduce using rule 9 (statement -> class_definition .)
+    ARRAY           reduce using rule 9 (statement -> class_definition .)
+    IF              reduce using rule 9 (statement -> class_definition .)
+    WHILE           reduce using rule 9 (statement -> class_definition .)
+    CLASS           reduce using rule 9 (statement -> class_definition .)
+    IDENTIFIER      reduce using rule 9 (statement -> class_definition .)
+    $end            reduce using rule 9 (statement -> class_definition .)
+
+
+state 10
+
+    (10) statement -> object_creation .
+
+    FUNCTION        reduce using rule 10 (statement -> object_creation .)
+    INT             reduce using rule 10 (statement -> object_creation .)
+    FLOAT           reduce using rule 10 (statement -> object_creation .)
+    STRING          reduce using rule 10 (statement -> object_creation .)
+    ARRAY           reduce using rule 10 (statement -> object_creation .)
+    IF              reduce using rule 10 (statement -> object_creation .)
+    WHILE           reduce using rule 10 (statement -> object_creation .)
+    CLASS           reduce using rule 10 (statement -> object_creation .)
+    IDENTIFIER      reduce using rule 10 (statement -> object_creation .)
+    $end            reduce using rule 10 (statement -> object_creation .)
+
+
+state 11
+
+    (11) function_declaration -> FUNCTION . IDENTIFIER LPAREN RPAREN SEMICOLON
+    (12) function_definition -> FUNCTION . IDENTIFIER LPAREN RPAREN LBRACE RBRACE
+
+    IDENTIFIER      shift and go to state 21
+
+
+state 12
+
+    (20) object_creation -> IDENTIFIER . IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    IDENTIFIER      shift and go to state 22
+
+
+state 13
+
+    (13) datatype_declaration -> INT . IDENTIFIER SEMICOLON
+
+    IDENTIFIER      shift and go to state 23
+
+
+state 14
+
+    (14) datatype_declaration -> FLOAT . IDENTIFIER SEMICOLON
+
+    IDENTIFIER      shift and go to state 24
+
+
+state 15
+
+    (15) datatype_declaration -> STRING . IDENTIFIER SEMICOLON
+
+    IDENTIFIER      shift and go to state 25
+
+
+state 16
+
+    (16) array_declaration -> ARRAY . IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON
+
+    IDENTIFIER      shift and go to state 26
+
+
+state 17
+
+    (17) selection_statement -> IF . LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+
+    LPAREN          shift and go to state 27
+
+
+state 18
+
+    (18) loop_construct -> WHILE . LPAREN IDENTIFIER RPAREN LBRACE RBRACE
+
+    LPAREN          shift and go to state 28
+
+
+state 19
+
+    (19) class_definition -> CLASS . IDENTIFIER LBRACE RBRACE
+
+    IDENTIFIER      shift and go to state 29
+
+
+state 20
+
+    (2) program -> program statement .
+
+    FUNCTION        reduce using rule 2 (program -> program statement .)
+    INT             reduce using rule 2 (program -> program statement .)
+    FLOAT           reduce using rule 2 (program -> program statement .)
+    STRING          reduce using rule 2 (program -> program statement .)
+    ARRAY           reduce using rule 2 (program -> program statement .)
+    IF              reduce using rule 2 (program -> program statement .)
+    WHILE           reduce using rule 2 (program -> program statement .)
+    CLASS           reduce using rule 2 (program -> program statement .)
+    IDENTIFIER      reduce using rule 2 (program -> program statement .)
+    $end            reduce using rule 2 (program -> program statement .)
+
+
+state 21
+
+    (11) function_declaration -> FUNCTION IDENTIFIER . LPAREN RPAREN SEMICOLON
+    (12) function_definition -> FUNCTION IDENTIFIER . LPAREN RPAREN LBRACE RBRACE
+
+    LPAREN          shift and go to state 30
+
+
+state 22
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER . EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    EQUAL           shift and go to state 31
+
+
+state 23
+
+    (13) datatype_declaration -> INT IDENTIFIER . SEMICOLON
+
+    SEMICOLON       shift and go to state 32
+
+
+state 24
+
+    (14) datatype_declaration -> FLOAT IDENTIFIER . SEMICOLON
+
+    SEMICOLON       shift and go to state 33
+
+
+state 25
+
+    (15) datatype_declaration -> STRING IDENTIFIER . SEMICOLON
+
+    SEMICOLON       shift and go to state 34
+
+
+state 26
+
+    (16) array_declaration -> ARRAY IDENTIFIER . EQUAL LBRACE RBRACE SEMICOLON
+
+    EQUAL           shift and go to state 35
+
+
+state 27
+
+    (17) selection_statement -> IF LPAREN . IDENTIFIER RPAREN LBRACE RBRACE
+
+    IDENTIFIER      shift and go to state 36
+
+
+state 28
+
+    (18) loop_construct -> WHILE LPAREN . IDENTIFIER RPAREN LBRACE RBRACE
+
+    IDENTIFIER      shift and go to state 37
+
+
+state 29
+
+    (19) class_definition -> CLASS IDENTIFIER . LBRACE RBRACE
+
+    LBRACE          shift and go to state 38
+
+
+state 30
+
+    (11) function_declaration -> FUNCTION IDENTIFIER LPAREN . RPAREN SEMICOLON
+    (12) function_definition -> FUNCTION IDENTIFIER LPAREN . RPAREN LBRACE RBRACE
+
+    RPAREN          shift and go to state 39
+
+
+state 31
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL . NEW IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    NEW             shift and go to state 40
+
+
+state 32
+
+    (13) datatype_declaration -> INT IDENTIFIER SEMICOLON .
+
+    FUNCTION        reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    INT             reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    FLOAT           reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    STRING          reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    ARRAY           reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    IF              reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    WHILE           reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    CLASS           reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    IDENTIFIER      reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+    $end            reduce using rule 13 (datatype_declaration -> INT IDENTIFIER SEMICOLON .)
+
+
+state 33
+
+    (14) datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .
+
+    FUNCTION        reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    INT             reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    FLOAT           reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    STRING          reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    ARRAY           reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    IF              reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    WHILE           reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    CLASS           reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    IDENTIFIER      reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+    $end            reduce using rule 14 (datatype_declaration -> FLOAT IDENTIFIER SEMICOLON .)
+
+
+state 34
+
+    (15) datatype_declaration -> STRING IDENTIFIER SEMICOLON .
+
+    FUNCTION        reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    INT             reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    FLOAT           reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    STRING          reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    ARRAY           reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    IF              reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    WHILE           reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    CLASS           reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    IDENTIFIER      reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+    $end            reduce using rule 15 (datatype_declaration -> STRING IDENTIFIER SEMICOLON .)
+
+
+state 35
+
+    (16) array_declaration -> ARRAY IDENTIFIER EQUAL . LBRACE RBRACE SEMICOLON
+
+    LBRACE          shift and go to state 41
+
+
+state 36
+
+    (17) selection_statement -> IF LPAREN IDENTIFIER . RPAREN LBRACE RBRACE
+
+    RPAREN          shift and go to state 42
+
+
+state 37
+
+    (18) loop_construct -> WHILE LPAREN IDENTIFIER . RPAREN LBRACE RBRACE
+
+    RPAREN          shift and go to state 43
+
+
+state 38
+
+    (19) class_definition -> CLASS IDENTIFIER LBRACE . RBRACE
+
+    RBRACE          shift and go to state 44
+
+
+state 39
+
+    (11) function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN . SEMICOLON
+    (12) function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN . LBRACE RBRACE
+
+    SEMICOLON       shift and go to state 45
+    LBRACE          shift and go to state 46
+
+
+state 40
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW . IDENTIFIER LPAREN RPAREN SEMICOLON
+
+    IDENTIFIER      shift and go to state 47
+
+
+state 41
+
+    (16) array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE . RBRACE SEMICOLON
+
+    RBRACE          shift and go to state 48
+
+
+state 42
+
+    (17) selection_statement -> IF LPAREN IDENTIFIER RPAREN . LBRACE RBRACE
+
+    LBRACE          shift and go to state 49
+
+
+state 43
+
+    (18) loop_construct -> WHILE LPAREN IDENTIFIER RPAREN . LBRACE RBRACE
+
+    LBRACE          shift and go to state 50
+
+
+state 44
+
+    (19) class_definition -> CLASS IDENTIFIER LBRACE RBRACE .
+
+    FUNCTION        reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    INT             reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    FLOAT           reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    STRING          reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    ARRAY           reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    IF              reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    WHILE           reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    CLASS           reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    IDENTIFIER      reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+    $end            reduce using rule 19 (class_definition -> CLASS IDENTIFIER LBRACE RBRACE .)
+
+
+state 45
+
+    (11) function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .
+
+    FUNCTION        reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    INT             reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    FLOAT           reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    STRING          reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    ARRAY           reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    IF              reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    WHILE           reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    CLASS           reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    IDENTIFIER      reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    $end            reduce using rule 11 (function_declaration -> FUNCTION IDENTIFIER LPAREN RPAREN SEMICOLON .)
+
+
+state 46
+
+    (12) function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE . RBRACE
+
+    RBRACE          shift and go to state 51
+
+
+state 47
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER . LPAREN RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 52
+
+
+state 48
+
+    (16) array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE . SEMICOLON
+
+    SEMICOLON       shift and go to state 53
+
+
+state 49
+
+    (17) selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE . RBRACE
+
+    RBRACE          shift and go to state 54
+
+
+state 50
+
+    (18) loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE . RBRACE
+
+    RBRACE          shift and go to state 55
+
+
+state 51
+
+    (12) function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .
+
+    FUNCTION        reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    INT             reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    FLOAT           reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    STRING          reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    ARRAY           reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    IF              reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    WHILE           reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    CLASS           reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    IDENTIFIER      reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+    $end            reduce using rule 12 (function_definition -> FUNCTION IDENTIFIER LPAREN RPAREN LBRACE RBRACE .)
+
+
+state 52
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN . RPAREN SEMICOLON
+
+    RPAREN          shift and go to state 56
+
+
+state 53
+
+    (16) array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .
+
+    FUNCTION        reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    INT             reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    FLOAT           reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    STRING          reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    ARRAY           reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    IF              reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    WHILE           reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    CLASS           reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    IDENTIFIER      reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+    $end            reduce using rule 16 (array_declaration -> ARRAY IDENTIFIER EQUAL LBRACE RBRACE SEMICOLON .)
+
+
+state 54
+
+    (17) selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .
+
+    FUNCTION        reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    INT             reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    FLOAT           reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    STRING          reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    ARRAY           reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    IF              reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    WHILE           reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    CLASS           reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    IDENTIFIER      reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    $end            reduce using rule 17 (selection_statement -> IF LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+
+
+state 55
+
+    (18) loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .
+
+    FUNCTION        reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    INT             reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    FLOAT           reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    STRING          reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    ARRAY           reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    IF              reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    WHILE           reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    CLASS           reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    IDENTIFIER      reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+    $end            reduce using rule 18 (loop_construct -> WHILE LPAREN IDENTIFIER RPAREN LBRACE RBRACE .)
+
+
+state 56
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 57
+
+
+state 57
+
+    (20) object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .
+
+    FUNCTION        reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    INT             reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    FLOAT           reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    STRING          reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    ARRAY           reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    IF              reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    WHILE           reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    CLASS           reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    IDENTIFIER      reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+    $end            reduce using rule 20 (object_creation -> IDENTIFIER IDENTIFIER EQUAL NEW IDENTIFIER LPAREN RPAREN SEMICOLON .)
+

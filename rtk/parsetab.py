@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COLON COMMA DEF EQUALS ID LPAREN NUMBER RPAREN STRING\n    function_declaration : DEF ID LPAREN params RPAREN COLON statements\n    \n    params  : empty \n            | paramlist\n    \n    paramlist    : ID\n                 | ID COMMA paramlist\n    \n    statements   : statement\n                 | statement statements\n    \n    statement    : var_assign\n    \n    var_assign   : ID EQUALS STRING\n                 | ID EQUALS NUMBER\n    \n    empty :\n    '
+_lr_signature = 'CLASS EQUALS ID LPAREN RPAREN\n    object_declaration : ID EQUALS CLASS LPAREN RPAREN\n    '
     
-_lr_action_items = {'DEF':([0,],[2,]),'$end':([1,14,15,16,18,19,20,],[0,-1,-6,-8,-7,-9,-10,]),'ID':([2,4,9,12,15,16,19,20,],[3,5,5,13,13,-8,-9,-10,]),'LPAREN':([3,],[4,]),'RPAREN':([4,5,6,7,8,11,],[-11,-4,10,-2,-3,-5,]),'COMMA':([5,],[9,]),'COLON':([10,],[12,]),'EQUALS':([13,],[17,]),'STRING':([17,],[19,]),'NUMBER':([17,],[20,]),}
+_lr_action_items = {'ID':([0,],[2,]),'$end':([1,6,],[0,-1,]),'EQUALS':([2,],[3,]),'CLASS':([3,],[4,]),'LPAREN':([4,],[5,]),'RPAREN':([5,],[6,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'function_declaration':([0,],[1,]),'params':([4,],[6,]),'empty':([4,],[7,]),'paramlist':([4,9,],[8,11,]),'statements':([12,15,],[14,18,]),'statement':([12,15,],[15,15,]),'var_assign':([12,15,],[16,16,]),}
+_lr_goto_items = {'object_declaration':([0,],[1,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,16 +26,6 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> function_declaration","S'",1,None,None,None),
-  ('function_declaration -> DEF ID LPAREN params RPAREN COLON statements','function_declaration',7,'p_function_declaration','1_FunctionDec.py',45),
-  ('params -> empty','params',1,'p_params','1_FunctionDec.py',50),
-  ('params -> paramlist','params',1,'p_params','1_FunctionDec.py',51),
-  ('paramlist -> ID','paramlist',1,'p_paramlist','1_FunctionDec.py',56),
-  ('paramlist -> ID COMMA paramlist','paramlist',3,'p_paramlist','1_FunctionDec.py',57),
-  ('statements -> statement','statements',1,'p_statements','1_FunctionDec.py',62),
-  ('statements -> statement statements','statements',2,'p_statements','1_FunctionDec.py',63),
-  ('statement -> var_assign','statement',1,'p_statement','1_FunctionDec.py',68),
-  ('var_assign -> ID EQUALS STRING','var_assign',3,'p_var_assign','1_FunctionDec.py',73),
-  ('var_assign -> ID EQUALS NUMBER','var_assign',3,'p_var_assign','1_FunctionDec.py',74),
-  ('empty -> <empty>','empty',0,'p_empty','1_FunctionDec.py',80),
+  ("S' -> object_declaration","S'",1,None,None,None),
+  ('object_declaration -> ID EQUALS CLASS LPAREN RPAREN','object_declaration',5,'p_object_declaration','5_ObjectDeclaration.py',42),
 ]

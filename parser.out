@@ -2,70 +2,226 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Grammar
 
-Rule 0     S' -> object_declaration
-Rule 1     object_declaration -> ID EQUALS CLASS LPAREN RPAREN
+Rule 0     S' -> function_declaration
+Rule 1     function_declaration -> DEF ID LPAREN params RPAREN COLON statements
+Rule 2     params -> empty
+Rule 3     params -> paramlist
+Rule 4     paramlist -> ID
+Rule 5     paramlist -> ID COMMA paramlist
+Rule 6     statements -> statement
+Rule 7     statements -> statement statements
+Rule 8     statement -> var_assign
+Rule 9     var_assign -> ID EQUALS STRING
+Rule 10    var_assign -> ID EQUALS NUMBER
+Rule 11    empty -> <empty>
 
 Terminals, with rules where they appear
 
-CLASS                : 1
-EQUALS               : 1
-ID                   : 1
+COLON                : 1
+COMMA                : 5
+DEF                  : 1
+EQUALS               : 9 10
+ID                   : 1 4 5 9 10
 LPAREN               : 1
+NUMBER               : 10
 RPAREN               : 1
+STRING               : 9
 error                : 
 
 Nonterminals, with rules where they appear
 
-object_declaration   : 0
+empty                : 2
+function_declaration : 0
+paramlist            : 3 5
+params               : 1
+statement            : 6 7
+statements           : 1 7
+var_assign           : 8
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . object_declaration
-    (1) object_declaration -> . ID EQUALS CLASS LPAREN RPAREN
+    (0) S' -> . function_declaration
+    (1) function_declaration -> . DEF ID LPAREN params RPAREN COLON statements
 
-    ID              shift and go to state 2
+    DEF             shift and go to state 2
 
-    object_declaration             shift and go to state 1
+    function_declaration           shift and go to state 1
 
 state 1
 
-    (0) S' -> object_declaration .
+    (0) S' -> function_declaration .
 
 
 
 state 2
 
-    (1) object_declaration -> ID . EQUALS CLASS LPAREN RPAREN
+    (1) function_declaration -> DEF . ID LPAREN params RPAREN COLON statements
 
-    EQUALS          shift and go to state 3
+    ID              shift and go to state 3
 
 
 state 3
 
-    (1) object_declaration -> ID EQUALS . CLASS LPAREN RPAREN
+    (1) function_declaration -> DEF ID . LPAREN params RPAREN COLON statements
 
-    CLASS           shift and go to state 4
+    LPAREN          shift and go to state 4
 
 
 state 4
 
-    (1) object_declaration -> ID EQUALS CLASS . LPAREN RPAREN
+    (1) function_declaration -> DEF ID LPAREN . params RPAREN COLON statements
+    (2) params -> . empty
+    (3) params -> . paramlist
+    (11) empty -> .
+    (4) paramlist -> . ID
+    (5) paramlist -> . ID COMMA paramlist
 
-    LPAREN          shift and go to state 5
+    RPAREN          reduce using rule 11 (empty -> .)
+    ID              shift and go to state 5
 
+    params                         shift and go to state 6
+    empty                          shift and go to state 7
+    paramlist                      shift and go to state 8
 
 state 5
 
-    (1) object_declaration -> ID EQUALS CLASS LPAREN . RPAREN
+    (4) paramlist -> ID .
+    (5) paramlist -> ID . COMMA paramlist
 
-    RPAREN          shift and go to state 6
+    RPAREN          reduce using rule 4 (paramlist -> ID .)
+    COMMA           shift and go to state 9
 
 
 state 6
 
-    (1) object_declaration -> ID EQUALS CLASS LPAREN RPAREN .
+    (1) function_declaration -> DEF ID LPAREN params . RPAREN COLON statements
 
-    $end            reduce using rule 1 (object_declaration -> ID EQUALS CLASS LPAREN RPAREN .)
+    RPAREN          shift and go to state 10
+
+
+state 7
+
+    (2) params -> empty .
+
+    RPAREN          reduce using rule 2 (params -> empty .)
+
+
+state 8
+
+    (3) params -> paramlist .
+
+    RPAREN          reduce using rule 3 (params -> paramlist .)
+
+
+state 9
+
+    (5) paramlist -> ID COMMA . paramlist
+    (4) paramlist -> . ID
+    (5) paramlist -> . ID COMMA paramlist
+
+    ID              shift and go to state 5
+
+    paramlist                      shift and go to state 11
+
+state 10
+
+    (1) function_declaration -> DEF ID LPAREN params RPAREN . COLON statements
+
+    COLON           shift and go to state 12
+
+
+state 11
+
+    (5) paramlist -> ID COMMA paramlist .
+
+    RPAREN          reduce using rule 5 (paramlist -> ID COMMA paramlist .)
+
+
+state 12
+
+    (1) function_declaration -> DEF ID LPAREN params RPAREN COLON . statements
+    (6) statements -> . statement
+    (7) statements -> . statement statements
+    (8) statement -> . var_assign
+    (9) var_assign -> . ID EQUALS STRING
+    (10) var_assign -> . ID EQUALS NUMBER
+
+    ID              shift and go to state 13
+
+    statements                     shift and go to state 14
+    statement                      shift and go to state 15
+    var_assign                     shift and go to state 16
+
+state 13
+
+    (9) var_assign -> ID . EQUALS STRING
+    (10) var_assign -> ID . EQUALS NUMBER
+
+    EQUALS          shift and go to state 17
+
+
+state 14
+
+    (1) function_declaration -> DEF ID LPAREN params RPAREN COLON statements .
+
+    $end            reduce using rule 1 (function_declaration -> DEF ID LPAREN params RPAREN COLON statements .)
+
+
+state 15
+
+    (6) statements -> statement .
+    (7) statements -> statement . statements
+    (6) statements -> . statement
+    (7) statements -> . statement statements
+    (8) statement -> . var_assign
+    (9) var_assign -> . ID EQUALS STRING
+    (10) var_assign -> . ID EQUALS NUMBER
+
+    $end            reduce using rule 6 (statements -> statement .)
+    ID              shift and go to state 13
+
+    statement                      shift and go to state 15
+    statements                     shift and go to state 18
+    var_assign                     shift and go to state 16
+
+state 16
+
+    (8) statement -> var_assign .
+
+    ID              reduce using rule 8 (statement -> var_assign .)
+    $end            reduce using rule 8 (statement -> var_assign .)
+
+
+state 17
+
+    (9) var_assign -> ID EQUALS . STRING
+    (10) var_assign -> ID EQUALS . NUMBER
+
+    STRING          shift and go to state 19
+    NUMBER          shift and go to state 20
+
+
+state 18
+
+    (7) statements -> statement statements .
+
+    $end            reduce using rule 7 (statements -> statement statements .)
+
+
+state 19
+
+    (9) var_assign -> ID EQUALS STRING .
+
+    ID              reduce using rule 9 (var_assign -> ID EQUALS STRING .)
+    $end            reduce using rule 9 (var_assign -> ID EQUALS STRING .)
+
+
+state 20
+
+    (10) var_assign -> ID EQUALS NUMBER .
+
+    ID              reduce using rule 10 (var_assign -> ID EQUALS NUMBER .)
+    $end            reduce using rule 10 (var_assign -> ID EQUALS NUMBER .)
 
